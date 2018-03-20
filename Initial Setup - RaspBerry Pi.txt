@@ -1,0 +1,70 @@
+Raspberry Pi Setup
+
+Download the Latest Image and Burn it to a SD card.
+
+Enable SSH
+After Writing the Image File to the SD Card, there will be a Boot Partition.
+Create an Empty File called ssh in there, and plug in to the Raspberry Pi.
+
+WiFi Setup
+In the /boot Folder create a file "wpa_supplicant.conf"
+Write the Following in that file.
+
+country=GB
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+    ssid="Emrys Redmi Note 4"
+    psk="lipun12k@4"
+	id_str="Mobile"
+	priority=2
+}
+
+network={
+    ssid="Emrys's WiFI"
+    psk="lipun12k@4"
+    id_str="Router"
+	priority=1
+}
+
+
+
+Login via SSH using User: pi  Password: raspberry
+
+To View The Release Info
+cat /etc/*-release
+
+Set Date
+
+date -s "13 MAR 2018 10:04:00"
+
+Enable Root Login
+
+
+
+
+If you want to login as root using SSH or WinSCP you need to edit the config of SSHD, do this:
+
+Login, and edit this file: sudo nano /etc/ssh/sshd_config
+Find this line: PermitRootLogin without-password
+Edit: PermitRootLogin yes
+Close and save file
+reboot or restart sshd service using: sudo /etc/init.d/ssh restart
+Set a root password if there isn't one already: sudo passwd root
+
+
+Playing Music on Raspberry Pi
+Install MOC (Music on Console)
+sudo apt-get install mocp
+
+mocp - starts mocp music player over terminal
+alsamixer - starts the Volume Control from Terminal
+
+
+
+Remote Python Debug and Development
+
+echo /usr/local/lib/python2.7/dist-packages/pycharm-debug.egg | sudo tee -a /usr/local/lib/python2.7/dist-packages/pycharm-debug.pth
+
+echo /usr/local/lib/python3.5/dist-packages/pycharm-debug-py3k.egg | sudo tee -a /usr/local/lib/python3.5/dist-packages/pycharm-debug-py3k.pth

@@ -1,0 +1,52 @@
+PyNQ Initial Setup
+
+Download the Latest Image From http://pynq.readthedocs.io/en/latest/getting_started.html
+
+Write The image to an Appropriate SD Card (8Gb or Bigger)
+Use Etcher Software to Burn The Image
+
+
+Login via SSH using User: xilinx  Password: xilinx
+
+To View The Release Info
+cat /etc/*-release
+
+Set Date Manually as there is no RTC
+
+date -s "13 MAR 2018 10:04:00"
+
+Set a root password if there isn't one already: 
+sudo passwd root
+
+Enable Root Login over SSH
+
+If you want to login as root using SSH or WinSCP you need to edit the config of SSHD, do this:
+
+Login, and edit this file: sudo nano /etc/ssh/sshd_config
+Find this line: PermitRootLogin without-password
+Edit: PermitRootLogin yes
+Close and save file
+reboot or restart sshd service using: sudo /etc/init.d/ssh restart
+
+Update Package Repo List
+sudo apt-get update
+
+
+[OPTIONAL] Install Speedometer to Monitor Internet Speed.
+sudo apt-get install speedometer
+
+Run SpeedoMeter as
+speedometer -r eth0
+
+Update the Git Repo of Latest PyNQ Examples
+
+sudo -H pip3.6 install --upgrade git+https://github.com/Xilinx/PYNQ.git
+
+View availabe Diskspace
+df -h
+
+
+Speed Test
+wget --output-document=/dev/null http://speedtest.tele2.net/100MB.zip
+
+
