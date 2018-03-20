@@ -15,7 +15,7 @@ Set Date Manually as there is no RTC
 
 date -s "13 MAR 2018 10:04:00"
 
-Set a root password if there isn't one already: 
+Set a root password if there isn't one already:
 sudo passwd root
 
 Enable Root Login over SSH
@@ -30,6 +30,11 @@ reboot or restart sshd service using: sudo /etc/init.d/ssh restart
 
 Update Package Repo List
 sudo apt-get update
+
+To Upgrade the Packages
+sudo apt-get upgrade
+
+
 
 
 [OPTIONAL] Install Speedometer to Monitor Internet Speed.
@@ -48,5 +53,3 @@ df -h
 
 Speed Test
 wget --output-document=/dev/null http://speedtest.tele2.net/100MB.zip
-
-
